@@ -23,74 +23,63 @@
         <h1>Advanced Todo</h1>
       </header>
       <form id="todo-form">
-        <p>Add a todo:</p>
+        <p>Add your task: </p>
         <div class="form-control">
-          <input type="text" id="todo-input" placeholder="What you gonna do?" />
+          <input
+            type="text"
+            id="todo-input"
+            placeholder="What you will do?"
+          />
           <button type="submit">
             <i class="fa-thin fa-plus"></i>
           </button>
         </div>
-        <button id="cancel-edit-btn">Cancel</button>
       </form>
-      <!-- Edit form -->
-      <form id="edit-form">
-        <p>Edit your task:</p>
+      <form id="edit-form" class="hide">
+        <p>Edit your task</p>
         <div class="form-control">
           <input type="text" id="edit-input" />
           <button type="submit">
             <i class="fa-solid fa-check-double"></i>
           </button>
         </div>
+        <button id="cancel-edit-btn">Cancel</button>
       </form>
-      <!-- ToolBar -->
       <div id="toolbar">
-        <!-- Search -->
         <div id="search">
           <h4>Search:</h4>
           <form>
-            <input type="text" id="search-input" placeholder="Search" />
+            <input type="text" id="search-input" placeholder="Buscar..." />
             <button id="erase-button">
               <i class="fa-solid fa-delete-left"></i>
             </button>
           </form>
         </div>
-        <!-- Filter -->
         <div id="filter">
           <h4>Filter:</h4>
           <select id="filter-select">
-            <option value="all">Todos</option>
+            <option value="all">All</option>
             <option value="done">Done</option>
-            <option value="todo">To Do..</option>
+            <option value="todo">Todo</option>
           </select>
         </div>
       </div>
-
-      <!-- Tasks -->
       <div id="todo-list">
-        <div class="todo done">
-            <h3>Im doing something</h3>
+        <!-- 
+            Template
+            
+            <div class="todo">
+            <h3>doing something here...</h3>
             <button class="finish-todo">
-                <i class="fa-solid fa-pen"></i>
+              <i class="fa-solid fa-check"></i>
             </button>
             <button class="edit-todo">
-                <i class="fa-solid fa-check"></i>
+              <i class="fa-solid fa-pen"></i>
             </button>
             <button class="remove-todo">
-                <i class="fa-solid fa-xmark"></i>
+              <i class="fa-solid fa-xmark"></i>
             </button>
-        </div>
-        <div class="todo">
-            <h3>Study Javascript</h3>
-            <button class="finish-todo">
-                <i class="fa-solid fa-pen"></i>
-            </button>
-            <button class="edit-todo">
-                <i class="fa-solid fa-check"></i>
-            </button>
-            <button class="remove-todo">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
+          </div> -->
       </div>
     </div>
   </body>

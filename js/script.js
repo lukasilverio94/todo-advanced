@@ -6,6 +6,7 @@ const editForm = document.querySelector("#edit-form");
 const editInput = document.querySelector("#edit-input");
 const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 
+let oldInputValue;
 //Functions
 const saveTodo = (text) => {
   const todo = document.createElement("div");
@@ -35,6 +36,13 @@ const saveTodo = (text) => {
   todoInput.value = "";
   todoInput.focus();
 };
+
+// Toggle Forms
+const toggleForms = () => {
+  editForm.classList.toggle("hide");
+  todoForm.classList.toggle("hide");
+  todoList.classList.toggle("hide");
+};
 //Events
 todoForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -43,3 +51,62 @@ todoForm.addEventListener("submit", (e) => {
     saveTodo(inputValue);
   }
 });
+
+//Update Todo
+const updateToDo = (text) => {
+
+    const todos = document.querySelectorAll(".todo");
+
+    todos.forEach((todo) => {
+
+        let todoTitle = todo.querySelector("h3");
+
+        if(todoTitle.innerText === oldInputValue){
+            todoTitle.innerText = text;
+        }
+    })
+
+
+}
+//Add to the  document because we gonna target all the buttons.
+document.addEventListener("click", (e) => {
+  const targetEl = e.target;
+  const parentEl = targetEl.closest("div"); //Parent is div, that is the todo.
+  let todoTitle;
+
+  if (parentEl && parentEl.querySelector("h3")) {
+    todoTitle = parentEl.querySelector("h3").innerText;
+  }
+
+  if (targetEl.classList.contains("finish-todo")) {
+    //add the the parentdiv the done class.
+    parentEl.classList.toggle("done");
+  }
+  if (targetEl.classList.contains("edit-todo")) {
+    toggleForms();
+
+    editInput.value = todoTitle;
+    oldInputValue = todoTitle;
+  }
+  if (targetEl.classList.contains("remove-todo")) {
+    parentEl.remove();
+  }
+});
+
+cancelEditBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  toggleForms();
+});
+
+
+editForm.addEventListener("submit", (e) => {
+    e.preventDefault()
+
+    const editInputValue = editInput.value;
+
+    if(editInputValue){
+        updateToDo(editInputValue)
+    }
+
+    toggleForms();
+})
